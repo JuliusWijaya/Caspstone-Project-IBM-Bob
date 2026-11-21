@@ -1,0 +1,186 @@
+/* =============================================================
+   EatSure Complaints Dashboard — Custom Styles (style.css)
+   Tailwind CSS handles the main layout; this file adds:
+   - Reusable component classes referenced in index.html
+   - Smooth transitions & hover effects
+   - Responsive chart wrappers
+   - Filter chip / select styling
+   ============================================================= */
+
+/* ---- Base font & box-sizing ---- */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  font-family: -apple-system, "Segoe UI", system-ui, sans-serif;
+  scroll-behavior: smooth;
+}
+
+/* ===== KPI CARDS ===== */
+.kpi-card {
+  background: #ffffff;
+  border: 1px solid #f0f0f0;
+  border-radius: 1rem;
+  padding: 1.25rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.kpi-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+.kpi-icon {
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.kpi-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1.2;
+  margin-bottom: 0.2rem;
+}
+
+.kpi-value {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #111827;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+/* ===== CHART CARDS ===== */
+.chart-card {
+  background: #ffffff;
+  border: 1px solid #f0f0f0;
+  border-radius: 1rem;
+  padding: 1.25rem;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  transition: box-shadow 0.2s ease;
+}
+.chart-card:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+}
+
+.chart-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+/* Chart container heights */
+.chart-wrap {
+  position: relative;
+  height: 280px;
+}
+.chart-wrap-sm {
+  height: 220px;
+}
+.chart-wrap-lg {
+  height: 340px;
+}
+
+/* ===== FILTER COMPONENTS ===== */
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.filter-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.filter-select {
+  width: 100%;
+  font-size: 0.8rem;
+  color: #374151;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  padding: 0.4rem 0.6rem;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  cursor: pointer;
+  appearance: auto;
+}
+.filter-select:focus {
+  border-color: #f97316;
+  box-shadow: 0 0 0 2px rgba(249,115,22,0.15);
+  background: #fff;
+}
+.filter-select:hover {
+  border-color: #d1d5db;
+}
+
+/* ===== CSAT CHIPS ===== */
+.csat-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.9rem;
+  height: 1.9rem;
+  border-radius: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border: 1.5px solid #e5e7eb;
+  background: #f9fafb;
+  color: #6b7280;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+.csat-chip:hover {
+  border-color: #f97316;
+  color: #f97316;
+  background: #fff7ed;
+}
+.csat-chip.active {
+  background: #f97316;
+  border-color: #f97316;
+  color: #ffffff;
+  box-shadow: 0 2px 6px rgba(249,115,22,0.3);
+}
+
+/* ===== SCROLLBAR (Webkit) ===== */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 4px; }
+::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #9ca3af; }
+
+/* ===== LOADING SKELETON SHIMMER ===== */
+@keyframes shimmer {
+  0% { background-position: -600px 0; }
+  100% { background-position: 600px 0; }
+}
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 600px 100%;
+  animation: shimmer 1.4s infinite linear;
+  border-radius: 0.5rem;
+}
+
+/* ===== RESPONSIVE TWEAKS ===== */
+@media (max-width: 640px) {
+  .kpi-value { font-size: 1.3rem; }
+  .chart-wrap { height: 240px; }
+  .chart-wrap-lg { height: 280px; }
+}
